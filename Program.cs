@@ -20,18 +20,22 @@ namespace AirlineNetworks
                 ewg.AddEdge(new Edge(source - 1, destination - 1, route.Distance));
             }
 
-            Console.WriteLine("E: " + ewg.E);
-            Console.WriteLine("V: " + ewg.V);
-            Console.WriteLine("Edges: " + ewg.Edges().Count());
             var adj = GetAdjacents("TUN");
-            Console.WriteLine("Adjacents: ");
-            Console.WriteLine(adj.Count());
             foreach (var route in adj)
             {
-                var source = GetAirportName(route.V);
-                var dest = GetAirportName(route.W);
+                var source = GetAirportCode(route.V);
+                var dest = GetAirportCode(route.W);
                 Console.WriteLine($"{source};{dest} {route.Weight:N2}");
             }
+            
+            var mst = new KruskalMST(ewg);
+            Console.WriteLine(mst);
+            var Edges = mst.Edges();
+            // foreach (var edge in Edges)
+            // {
+            //     
+            //     Console.WriteLine(edge);
+            // }
 
             IEnumerable<Edge> GetAdjacents(string key)
             {
@@ -40,7 +44,7 @@ namespace AirlineNetworks
                 
             }
 
-            string GetAirportName(int id)
+            string GetAirportCode(int id)
             {
                 return routeIds.FirstOrDefault(x => x.Value == id + 1).Key;
             }

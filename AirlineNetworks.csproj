@@ -32,6 +32,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="AlgorithmTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\AlgorithmTools\AlgorithmTools\bin\Debug\netcoreapp2.2\AlgorithmTools.dll</HintPath>
+        </Reference>
         <Reference Include="CsvHelper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823">
           <HintPath>packages\CsvHelper.15.0.5\lib\net47\CsvHelper.dll</HintPath>
           <Private>True</Private>
@@ -64,6 +67,7 @@
         <Compile Include="DataObjects\Route.cs" />
         <Compile Include="Graph\Edge.cs" />
         <Compile Include="Graph\EdgeWeightedGraph.cs" />
+        <Compile Include="Graph\KruskalMST.cs" />
         <Compile Include="IBag.cs" />
         <Compile Include="ISelection.cs" />
         <Compile Include="Program.cs" />
