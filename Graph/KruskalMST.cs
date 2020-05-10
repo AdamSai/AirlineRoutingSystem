@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AlgorithmTools;
@@ -13,6 +14,11 @@ namespace AirlineNetworks.Graph
             _mst = new Queue<Edge>();
             var pq = new MinPQ<Edge>(G.Edges().Count());
             var uf = new WeightedQuickUnion(G.V);
+            foreach (var edge in G.Edges())
+            {
+                if(edge is null) continue;
+                pq.Insert(edge);
+            }
             while (!pq.IsEmpty && _mst.Count() < G.V - 1)
             {
                 var e = pq.DelMin(); // Get min weight edge on pq
@@ -24,7 +30,7 @@ namespace AirlineNetworks.Graph
             }
         }
 
-        public IEnumerable<Edge> Edges()
+        public Queue<Edge> Edges()
         {
             return _mst;
         }

@@ -31,12 +31,11 @@ namespace AirlineNetworks
             var mst = new KruskalMST(ewg);
             Console.WriteLine(mst);
             var Edges = mst.Edges();
-            // foreach (var edge in Edges)
-            // {
-            //     
-            //     Console.WriteLine(edge);
-            // }
 
+            for (var i = 0; i < 200; i++)
+            {
+                Console.WriteLine(Edges.Dequeue());
+            }
             IEnumerable<Edge> GetAdjacents(string key)
             {
                 routeIds.TryGetValue(key, out int val);
